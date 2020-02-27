@@ -183,6 +183,12 @@ https://specifications.freedesktop.org/mpris-spec/latest/Player_Interface.html
                 del self.data
             return
 
+        except KeyError:
+            self.output = {
+                    "full_text": "NINJA",
+                    "color": self.color_no_player
+                    }
+
         except dbus.exceptions.DBusException as e:
             if self.hide_no_player:
                 self.output = None
